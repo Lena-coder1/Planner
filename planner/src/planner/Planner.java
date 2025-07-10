@@ -6,7 +6,7 @@ package planner;
 
 /**
  *
- * @author lynne
+ * @author Divine, Krishna, Lena & Lynneth
  */
 public class Planner {
 
@@ -15,6 +15,7 @@ public class Planner {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
     }
     
 }
