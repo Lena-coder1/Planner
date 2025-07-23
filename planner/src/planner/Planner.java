@@ -12,7 +12,12 @@ public class Planner {
 
     /**
      * where the modules will go
-     */    
+     */  
+    public void deleteTask()
+    {
+        
+    }
+            
     public static void main(String[] args) {
         // TODO code application logic here
         
