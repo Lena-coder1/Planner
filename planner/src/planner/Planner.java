@@ -11,8 +11,8 @@ package planner;
 public class Planner {
 
     /**
-     * @param args the command line arguments
-     */
+     * where the modules will go
+     */    
     public static void main(String[] args) {
         // TODO code application logic here
         
