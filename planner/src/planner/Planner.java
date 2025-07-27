@@ -16,6 +16,27 @@ public class Planner {
      */  
     static ArrayList<String> tasks = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
+
+    //edit tasks
+    public static void editTask() {
+        System.out.print("Please enter the taks number you want to edit:");
+        int selection = scan.nextInt();
+        scan.nextLine();
+
+        if (selection >=1 && selection <= tasks.size()) {
+            System.out.print("Edit task here:");
+            String editedTask = scan.nextLine();
+            tasks.set(selection -1, editedTask);
+        } else {
+            System.out.println("invalied number entered");
+        }
+
+        //show updated list
+        System.out.println("Updated tasks:");
+        for (int i=0; i < tasks.size(); i++){ 
+            System.out.println(i+1 + "." + tasks.get(i));
+        }
+    }
     
     //this module deletes the task the user wants to delete 
     public static void deleteTask()
@@ -48,6 +69,8 @@ public class Planner {
             System.out.println(i+1+"."+tasks.get(i));
         }
         
+        editTask();
+
         deleteTask();
         
         System.out.println("remaining tasks: ");
