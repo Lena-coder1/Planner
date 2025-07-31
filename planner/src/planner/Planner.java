@@ -1,6 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+/**
+ * Planner
+ * Group 10 Members: Divine, Krishna, Lena & Lynneth
+ * This is a simple planner application that allows users to add, edit, and delete tasks.
  */
 package planner;
 
@@ -8,14 +9,10 @@ import java.util.*;
 
 public class Planner {
 
-    /**
-     * where the modules will go
-     */  
     static ArrayList<String> tasks = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
 
-    // the module to add tasks
-    public static void addTasks() {
+    public static void addTasks() { // This module adds tasks to the planner
         System.out.print("Would you like to add a task (YES/NO): ");
         String answer = scan.nextLine();
 
@@ -26,10 +23,10 @@ public class Planner {
 
             try {
                 numTasks = scan.nextInt();
-                scan.nextLine(); // Consume the newline character
+                scan.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println("Invalid number entered.");
-                scan.nextLine(); // Consume the invalid input
+                scan.nextLine();
                 return;
             }
 
@@ -37,7 +34,7 @@ public class Planner {
                 for (int i = 0; i < numTasks; i++) {
                     System.out.print("Please enter task #" + (i + 1) + ": ");
                     String newTask = scan.nextLine();
-                    tasks.add(newTask); // Add the new task to the main ArrayList
+                    tasks.add(newTask);
                 }
 
                 System.out.println("\nYour Task List:");
@@ -53,8 +50,7 @@ public class Planner {
         }
     }
 
-    //edit tasks
-    public static void editTask() {
+    public static void editTask() { // This module edits the task the user wants to change
         System.out.print("Please enter the task number you want to edit:");
         int selection = scan.nextInt();
         scan.nextLine();
@@ -67,15 +63,13 @@ public class Planner {
             System.out.println("Invalid number entered");
         }
 
-        //show updated list
         System.out.println("Updated tasks:");
         for (int i=0; i < tasks.size(); i++){ 
             System.out.println(i+1 + "." + tasks.get(i));
         }
     }
     
-    //this module deletes the task the user wants to delete 
-    public static void deleteTask()
+    public static void deleteTask() // This module deletes the task the user wants to remove
     {
         System.out.print("Please enter the task number you want to delete: ");
         int selection = scan.nextInt();
@@ -90,12 +84,51 @@ public class Planner {
             System.out.println("invalid number entered");
         }
     }
-    public static void main(String[] args) {
-        System.out.println("Welcome to the Planner!");
-        addTasks();
-        editTask();
-        deleteTask();
-        System.out.println("Thank you for using the Planner!");
-        scan.close();
+
+public static void mainMenu() { // This module displays the main menu and handles user input
+    boolean exit = false;
+    while (!exit) {
+        System.out.println("\n----- Study Planner Menu -----");
+        System.out.println("1. Add a task");
+        System.out.println("2. Modify a task");
+        System.out.println("3. Remove a completed task");
+        System.out.println("4. Exit");
+        System.out.print("Enter your choice: ");
+
+        int choice;
+        try {
+            choice = scan.nextInt();
+            scan.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scan.nextLine();
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                addTasks();
+                break;
+            case 2:
+                editTask();
+                break;
+            case 3:
+                deleteTask();
+                break;
+            case 4:
+                System.out.println("Thank you for using the study planner, goodbye!");
+                exit = true;
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                break;
+        }
     }
+}
+
+public static void main(String[] args) { //Runs the planner application using all the modules
+    System.out.println("Welcome to the Planner!");
+    mainMenu();
+    scan.close();
+}
 }
